@@ -7,9 +7,20 @@
     <title>Login</title>
     <script src="https://unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="./index.css">
+    <script src="./auth.js"></script>
 </head>
 
 <body>
+
+<div id="div" class="">
+    <div id="div"></div>
+    <img src="" alt="">
+    <br>
+    <input type="text">
+</div>
+
 <!-- component -->
 <div class="max-w-[280px] mx-auto">
     <div class="flex flex-col items-center mt-[10vh]">
@@ -64,9 +75,18 @@
                 const token = credential.accessToken;
                 // The signed-in user info.
                 const user = result.user;
-                console.log(user);
-                // IdP data available using getAdditionalUserInfo(result)
-                // ...
+
+                // Lưu lại thông tin user
+                const localUser = {
+                    name: user.displayName,
+                    email: user.email,
+                    avatar: user.photoURL,
+                    uid: user.uid
+                };
+                // Lưu thông tin user vào localStorage
+                localStorage.setItem("user", JSON.stringify(localUser));
+                // Chuyển đến trang about
+                window.location.href = "/about.html";
             }).catch((error) => {
             // Handle Errors here.
             const errorCode = error.code;

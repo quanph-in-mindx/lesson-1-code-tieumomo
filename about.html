@@ -4,8 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <script src="./auth.js"></script>
+    <script>
+        // Nếu chưa đăng nhập sẽ bị chuyển về trang login
+        if (!isLoggedIn) {
+            window.location.href = "/index.html";
+        }
+    </script>
 </head>
 <body>
-    About
+About
+
+<h1 id="name"></h1>
+<h2 id="email"></h2>
+<img src="" id="avatar"/>
+<p id="uid"></p>
+
+<script>
+    document.getElementById("name").innerHTML = user.name;
+    document.getElementById("email").innerHTML = user.email;
+    document.getElementById("avatar").src = user.avatar;
+    document.getElementById("uid").innerHTML = user.uid;
+</script>
 </body>
 </html>
